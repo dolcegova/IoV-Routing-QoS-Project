@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fichier XML pour la mobilité dans une simulation NS-3 et MOVE -->
+<MobilityConfiguration>
+    <!-- Définition de la zone réseau -->
+    <NetworkArea width="4000" height="50" />
+
+    <!-- Définition du nombre de véhicules -->
+    <NumberOfVehicles min="60" max="160" />
+
+    <!-- Définition du nombre de RSUs -->
+    <NumberOfRSUs value="2" />
+
+    <!-- Définition du modèle de propagation -->
+    <PropagationModel type="TwoRayGround" />
+
+    <!-- Définition du modèle de mobilité -->
+    <MobilityModel type="RandomWaypoint" />
+
+    <!-- Définition de la vitesse des véhicules -->
+    <Velocity min="10" max="35" />
+
+    <!-- Définition du temps de simulation -->
+    <SimulationTime value="360" />
+
+    <!-- Définition des véhicules avec des itinéraires spécifiques -->
+    <Vehicles>
+        <!-- Vous pouvez définir les itinéraires de chaque véhicule ici -->
+        <!-- Exemple d'un véhicule -->
+        <Vehicle id="0">
+            <Waypoint time="0" x="0" y="0" z="0" speed="10" />
+            <Waypoint time="60" x="1000" y="0" z="0" speed="15" />
+            <Waypoint time="120" x="2000" y="0" z="0" speed="20" />
+            <!-- Ajoutez d'autres points de passage pour cet itinéraire -->
+        </Vehicle>
+
+        <!-- Répétez la définition des véhicules et des itinéraires -->
+        <!-- Vous pouvez ajouter des véhicules supplémentaires avec leurs itinéraires -->
+    </Vehicles>
+</MobilityConfiguration>

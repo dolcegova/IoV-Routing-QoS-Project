@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>dataset.kml</name>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>dataset</name>
+		<open>1</open>
+		<Placemark>
+			<name>F</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2273690132735,22.99008344350891,0 120.2235957812761,22.9914116782637,0 120.2215414512338,22.99217271478068,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>E</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2245775774207,22.99100501369623,0 120.223795143472,22.9916551739082,0 120.2239806755218,22.99591689660911,0 120.2248907473696,23.00505440383726,0 120.2240508562336,23.00736767666405,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>D</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2213059803059,23.00688300973124,0 120.2226114607531,23.00485606433918,0 120.2216503808129,22.99205535716171,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>C</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2151299347778,23.00381359680112,0 120.2187390052817,23.00331112796589,0 120.2223123538532,23.00281937111278,0 120.224738258274,23.00237414877205,0 120.2272546977357,23.002020314591,0 120.2280530007738,23.00045662040257,0 120.2287114032142,22.99554527710339,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>B</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2136402028422,22.99685002814728,0 120.2180675408356,22.99628067131805,0 120.2218926630224,22.99604552650196,0 120.2240785181378,22.99587781784921,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>A</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					120.2145899787376,23.00140378505851,0 120.2186534612665,23.00095624574325,0 120.2221844218898,23.00075969468682,0 120.2245320185719,23.00056877758972,0 120.2265947387404,23.00030564017848,0 120.2316889271178,22.99877705533117,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
