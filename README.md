@@ -5,7 +5,8 @@
 Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de réseau de véhicules (Internet of Vehicles). Le projet vise à améliorer l'acheminement et la qualité de service dans des contextes Internet of Vehicles en utilisant des techniques basées sur l'IA.
 
 ## Prérequis
-
+- OS : Ubuntu 18.04 ou +
+- Bonne maîtrise des commandes Linux
 - [NS-3](https://www.nsnam.org/) installé et configuré sur votre système.
 - [MOVE](http://networks.cs.ucdavis.edu/move/) installé et configuré sur votre système.
 
@@ -57,7 +58,6 @@ Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de
 
 Les contributions à ce projet sont les bienvenues. Veuillez soumettre vos demandes de fusion via des branches séparées et inclure des tests appropriés.
 
-=---
+------------------------------------------------------------------------------
 Si vous avez des questions ou des préoccupations, n'hésitez pas à me contacter.
 
-Bon travail avec le projet!
