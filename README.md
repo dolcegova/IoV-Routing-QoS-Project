@@ -56,7 +56,14 @@ Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de
     ./waf --run scratch/My_Simulation-IoV
     ```
 
-7. **Analyse des résultats** : Les résultats de la simulation sont généralement générés dans des fichiers de sortie (log, CSV, etc.). Analysez ces résultats pour évaluer les performances du réseau.
+7. **Visualiser la simulation avec Netanim** : Exécutez la simulation à l'aide du fichier de démarrage de votre simulation IoV.
+
+    cd ..
+cd netanim-3.108/
+./Netanim
+
+
+8. **Analyse des résultats** : Les résultats de la simulation sont généralement générés dans des fichiers de sortie (log, CSV, etc.). Analysez ces résultats pour évaluer les performances du réseau.
 
 ## Documentation
 
