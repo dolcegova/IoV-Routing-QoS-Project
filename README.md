@@ -1,49 +1,58 @@
 # Enhancing Routing and Quality of Service Using AI-driven Technique for Internet of Vehicles Contexts
 
-## Projet édité par Oussama SENOUCI
+Projet édité par Oussama SENOUCI
 
 Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de réseau de véhicules (Internet of Vehicles). Le projet vise à améliorer l'acheminement et la qualité de service dans des contextes Internet of Vehicles en utilisant des techniques basées sur l'IA.
 
 ## Prérequis
-- OS : Ubuntu 18.04 ou +
-- Bonne maîtrise des commandes Linux
-- [NS-3](https://www.nsnam.org/) installé et configuré sur votre système.
-- [MOVE](http://networks.cs.ucdavis.edu/move/) installé et configuré sur votre système.
+
+- **OS** : Ubuntu 18.04 ou plus récent
+- **Bonne maîtrise des commandes Linux**
+- **NS-3** installé et configuré sur votre système.
+- **MOVE** installé et configuré sur votre système.
+
+## Répertoires
+
+- **scratch** : Contient les fichiers NS-3 nécessaires pour simuler les scénarios Internet of Vehicles. Les scripts de simulation et les fichiers liés sont stockés ici.
+
+- **MOVE** : Contient les fichiers de configuration de simulation pour simuler la mobilité. Vous y trouverez également les fichiers de trace de mobilité générés par MOVE.
+
+- **results** : Stocke les résultats de simulation, tels que la durée de vie des clusters (CH lifetime et CM lifetime), le taux de livraison des paquets (Packet Delivery Ratio), et la surcharge de communication (Communication overhead).
 
 ## Étapes pour exécuter le projet
 
 1. **Cloner le projet** : Clonez ce dépôt GitHub sur votre machine locale.
 
-    ```shell
+    ```bash
     git clone https://github.com/votre-utilisateur/github-repo.git
     ```
 
 2. **Copier les fichiers** : Placez les fichiers de votre projet dans le répertoire `scratch` de NS-3.
 
-    ```shell
+    ```bash
     cp -r votre-projet/* /chemin/vers/ns3/scratch/
     ```
 
 3. **Exécuter MOVE** : Utilisez MOVE pour créer des fichiers de mobilité à partir des fichiers de configuration de mobilité (XML) et de vos scénarios.
 
-    ```shell
+    ```bash
     java -jar move.jar /chemin/vers/configuration.xml
     ```
 
-4. **Configurer la simulation** : Configurez les paramètres de la simulation dans les fichiers `My_Simulation-IoV`.
+4. **Configurer la simulation** : Configurez les paramètres de la simulation dans les fichiers de configuration de votre simulation IoV.
 
     - Mettez à jour les paramètres tels que le nombre de véhicules, la durée de la simulation, et autres.
 
 5. **Compiler la simulation** : Compilez le code de simulation NS-3 dans le répertoire `scratch`.
 
-    ```shell
+    ```bash
     cd /chemin/vers/ns3/
     ./waf
     ```
 
-6. **Exécuter la simulation** : Exécutez la simulation à l'aide du fichier de démarrage `My_Simulation-IoV`.
+6. **Exécuter la simulation** : Exécutez la simulation à l'aide du fichier de démarrage de votre simulation IoV.
 
-    ```shell
+    ```bash
     ./waf --run scratch/My_Simulation-IoV
     ```
 
@@ -58,6 +67,9 @@ Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de
 
 Les contributions à ce projet sont les bienvenues. Veuillez soumettre vos demandes de fusion via des branches séparées et inclure des tests appropriés.
 
-------------------------------------------------------------------------------
-Si vous avez des questions ou des préoccupations, n'hésitez pas à me contacter.
+
+
+
+
+
 
