@@ -1,6 +1,6 @@
 # Enhancing Routing and Quality of Service Using AI-driven Technique for Internet of Vehicles Contexts
 
-Projet édité par "Oussama SENOUCI"
+Projet édité par -- Oussama SENOUCI --
 
 Ce projet utilise les bibliothèques NS-3 et MOVE pour simuler des scénarios de réseau de véhicules (Internet of Vehicles). Le projet vise à améliorer l'acheminement et la qualité de service dans des contextes Internet of Vehicles en utilisant des techniques basées sur l'IA.
 
