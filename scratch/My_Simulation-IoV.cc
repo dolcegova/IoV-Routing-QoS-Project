@@ -28,7 +28,8 @@ for Internet of Vehicles Contexts
 #include "ns3/yans-wifi-phy.h"
 #include <vector>
 #include <cmath> // Pour std::abs
-
+#include <fstream>
+#include <iostream> // Pour std::cout
 using namespace ns3;
 
 // Définition de la structure de cluster
