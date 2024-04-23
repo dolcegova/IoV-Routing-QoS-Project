@@ -26,6 +26,8 @@ for Internet of Vehicles Contexts
 #include "ns3/wifi-phy-standard.h"
 #include "ns3/adhoc-wifi-mac.h"
 #include "ns3/yans-wifi-phy.h"
+#include <vector>
+#include <cmath> // Pour std::abs
 
 using namespace ns3;
 
@@ -85,6 +87,13 @@ int main(int argc, char* argv[]) {
     // Créer les clusters
     std::vector<Cluster> clusters;
     FormClusters(nodes, clusterRadius, clusters);
+
+ // Dossier de sortie
+    std::string output_folder = "results";
+
+    // Calcul et enregistrement des métriques de performance
+    calculate_and_save_performance_metrics(nodes, neighbors_list, output_folder);
+
 
     // Calculer et afficher les scores de mobilité
     for (Cluster& cluster : clusters) {
@@ -174,4 +183,113 @@ void PrintClusters(std::vector<Cluster>& clusters) {
         }
         std::cout << " Mobility Score: " << clusters[i].mobilityScore << std::endl;
     }
+}
+
+
+
+// Structure représentant un nœud
+struct Node {
+    double velocity; // Vitesse du nœud
+    double acceleration; // Accélération du nœud
+    int degree; // Degré du nœud
+};
+
+// Structure représentant un voisin avec une distance
+struct Neighbor {
+    Node node; // Nœud voisin
+    double distance; // Distance entre le nœud et le voisin
+};
+
+// Fonction pour calculer le score de mobilité d'un nœud donné
+double calculate_mobility_score(const Node& node, const std::vector<Neighbor>& neighbors, double alpha = 0.5, double beta = 0.3, double gamma = 0.2) {
+    // Calcul de VCI
+    double vci_sum = 0;
+    for (const Neighbor& neighbor : neighbors) {
+        double distance = neighbor.distance;
+        if (distance > 0) { // Pour éviter la division par zéro
+            vci_sum += (node.velocity * neighbor.node.velocity) / distance;
+        }
+    }
+    double vci = (node.degree > 0) ? vci_sum / node.degree : 0;
+
+    // Calcul de DNAR
+    double dnar = (node.degree > 0) ? static_cast<double>(neighbors.size()) / node.degree : 0;
+
+    // Calcul de RAV
+    double rav_sum = 0;
+    for (const Neighbor& neighbor : neighbors) {
+        double distance = neighbor.distance;
+        if (distance > 0) { // Pour éviter la division par zéro
+            rav_sum += std::abs(node.acceleration - neighbor.node.acceleration) / distance;
+        }
+    }
+    double rav = (node.degree > 0) ? rav_sum / node.degree : 0;
+
+    // Calcul du score de mobilité
+    double mobility_score = alpha * vci + beta * dnar + gamma * rav;
+
+    return mobility_score;
+}
+
+// Fonction pour calculer et enregistrer les métriques de performance
+void calculate_and_save_performance_metrics(const std::vector<Node>& nodes, const std::vector<std::vector<Neighbor>>& neighbors_list, const std::string& output_folder) {
+    // Variables pour les métriques de performance
+    double total_ch_lifespan = 0;
+    double total_cm_lifespan = 0;
+    int cluster_count = 0;
+    double clustering_overhead = 0;
+    double total_packets_received = 0;
+    double total_packets_sent = 0;
+
+    // Parcourir les nœuds pour calculer les métriques
+    for (size_t i = 0; i < nodes.size(); i++) {
+        const Node& node = nodes[i];
+        const std::vector<Neighbor>& neighbors = neighbors_list[i];
+
+        // Calculer le score de mobilité
+        double mobility_score = calculate_mobility_score(node, neighbors);
+        
+        // Mettre à jour les métriques
+        // Exemple de calcul des métriques de performance
+        // Vous pouvez adapter ces calculs en fonction des données que vous avez disponibles
+        
+        // Total CH Lifespan et CM Lifespan peuvent être calculés ici
+        // Cluster Count peut être calculé ici
+        // Clustering Overhead peut être calculé ici
+        // Packet Delivery Ratio peut être calculé ici en utilisant total_packets_received et total_packets_sent
+
+        // Ajouter aux métriques totales
+        total_ch_lifespan += ...; // Ajouter la durée de vie CH pour ce nœud
+        total_cm_lifespan += ...; // Ajouter la durée de vie CM pour ce nœud
+        cluster_count += ...; // Ajouter au nombre de clusters
+        clustering_overhead += ...; // Ajouter au coût de clustering
+        total_packets_received += ...; // Ajouter au total des paquets reçus
+        total_packets_sent += ...; // Ajouter au total des paquets envoyés
+    }
+
+    // Calculer les moyennes et les ratios
+    double average_ch_lifespan = total_ch_lifespan / nodes.size();
+    double average_cm_lifespan = total_cm_lifespan / nodes.size();
+    double pdr = (total_packets_received / total_packets_sent) * 100; // Packet Delivery Ratio
+
+    // Enregistrer les résultats dans des fichiers
+    std::ofstream file_chl(output_folder + "/chl.txt");
+    file_chl << "Average CH Lifespan: " << average_ch_lifespan << "\n";
+    file_chl.close();
+
+    std::ofstream file_cml(output_folder + "/cml.txt");
+    file_cml << "Average CM Lifespan: " << average_cm_lifespan << "\n";
+    file_cml.close();
+
+    std::ofstream file_cc(output_folder + "/cc.txt");
+    file_cc << "Cluster Count: " << cluster_count << "\n";
+    file_cc.close();
+
+    std::ofstream file_co(output_folder + "/co.txt");
+    file_co << "Clustering Overhead: " << clustering_overhead << "\n";
+    file_co.close();
+
+    std::ofstream file_pdr(output_folder + "/pdr.txt");
+    file_pdr << "Packet Delivery Ratio: " << pdr << "%\n";
+    file_pdr.close();
 }
