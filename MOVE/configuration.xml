@@ -1,39 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Fichier XML pour la mobilité dans une simulation NS-3 et MOVE -->
-<MobilityConfiguration>
-    <!-- Définition de la zone réseau -->
-    <NetworkArea width="4000" height="50" />
-
-    <!-- Définition du nombre de véhicules -->
-    <NumberOfVehicles min="60" max="160" />
-
-    <!-- Définition du nombre de RSUs -->
-    <NumberOfRSUs value="2" />
-
-    <!-- Définition du modèle de propagation -->
-    <PropagationModel type="TwoRayGround" />
-
-    <!-- Définition du modèle de mobilité -->
-    <MobilityModel type="RandomWaypoint" />
-
-    <!-- Définition de la vitesse des véhicules -->
-    <Velocity min="10" max="35" />
-
-    <!-- Définition du temps de simulation -->
-    <SimulationTime value="360" />
-
-    <!-- Définition des véhicules avec des itinéraires spécifiques -->
-    <Vehicles>
-        <!-- Vous pouvez définir les itinéraires de chaque véhicule ici -->
-        <!-- Exemple d'un véhicule -->
-        <Vehicle id="0">
-            <Waypoint time="0" x="0" y="0" z="0" speed="10" />
-            <Waypoint time="60" x="1000" y="0" z="0" speed="15" />
-            <Waypoint time="120" x="2000" y="0" z="0" speed="20" />
-            <!-- Ajoutez d'autres points de passage pour cet itinéraire -->
-        </Vehicle>
-
-        <!-- Répétez la définition des véhicules et des itinéraires -->
-        <!-- Vous pouvez ajouter des véhicules supplémentaires avec leurs itinéraires -->
-    </Vehicles>
-</MobilityConfiguration>
+<?xml version="1.0"?>
+<!-- Configuration pour generer la mobilité -->
+<universe>
+  <dimx>4000.0</dimx> <!-- x-dimension of the simulation area -->
+  <dimy>50.0</dimy>  <!-- y-dimension of the simulation area -->
+  <!-- <seed>18</seed>-->
+  <extension class="de.uni_stuttgart.informatik.canu.mobisim.extensions.NSOutput" output="ns_traceHCAR.txt"/>  <!-- Trace file of mobility-->
+  <extension class="de.uni_stuttgart.informatik.canu.mobisim.simulations.TimeSimulation" param="360.0"/>  <!-- Simulation time  -->
+	<extension name="SpatialModel" class="de.uni_stuttgart.informatik.canu.spatialmodel.core.SpatialModel" min_x="0" max_x="4000" min_y="0" max_y="50">
+	  <!-- <max_traffic_lights>6</max_traffic_lights> -->
+		 	<reflect_directions>true</reflect_directions>
+		<number_lane full="false" max="4" dir="true">3</number_lane> <!-- Lanes number -->
+	</extension> 	
+	<extension name="TrafficLight" class="eurecom.spatialmodel.extensions.TrafficLight" step="10000"/>
+ <extension class="eurecom.spacegraph.SpaceGraph" cluster="true">
+		<clusters density="0.00001">
+      <cluster id="suburban">
+        <density>0.00005</density>
+        <ratio>1.0</ratio>
+				<speed>25</speed>
+      </cluster>
+		</clusters>
+ </extension> 
+  <extension name="PosGen" class="de.uni_stuttgart.informatik.canu.tripmodel.generators.RandomInitialPositionGenerator"/>
+  <extension name="TripGen" class="de.uni_stuttgart.informatik.canu.tripmodel.generators.RandomTripGenerator" >
+    <reflect_directions>true</reflect_directions>
+	  <minstay>5.0</minstay> <maxstay>20.0</maxstay>
+  </extension>
+  <nodegroup n="100">  <!-- Number of nodes 60-160-->
+  <extension class="polito.uomm.IDM_LC" initposgenerator="PosGen" tripgenerator="TripGen">
+		 <minspeed>10.00</minspeed>  <!-- Maximal speed -->
+      <maxspeed>35.00</maxspeed>  <!-- Minmal speed -->
+      <step>0.1</step>
+			<b>1</b>
+    </extension>
+  </nodegroup>
+  <extension class="de.uni_stuttgart.informatik.canu.mobisimadd.extensions.GUI">
+    <width>700</width>
+    <height>500</height>
+    <step>1</step>
+  </extension>
+<!--
+  <extension class="de.uni_stuttgart.informatik.canu.spatialmodel.extensions.DumpSpatialModel" output="dumped_graph_double_mult_all.fig"/>
+-->
+</universe>
